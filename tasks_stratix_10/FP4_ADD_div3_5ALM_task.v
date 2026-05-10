@@ -1,0 +1,240 @@
+module quartus_prj (
+    dout,
+    clk,
+    din_A,
+    din_B);
+
+output  [0:0] dout;
+input   clk;
+input   [3:0] din_A;
+input   [3:0] din_B;
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+wire alm_0_sumout0;
+wire alm_0_sumout1;
+wire alm_0_cout;
+wire alm_0_lut5out0;
+wire alm_0_lut5out1;
+wire alm_0_lut6out;
+
+wire alm_1_sumout0;
+wire alm_1_sumout1;
+wire alm_1_cout;
+wire alm_1_lut5out0;
+wire alm_1_lut5out1;
+wire alm_1_lut6out;
+
+wire alm_2_sumout0;
+wire alm_2_sumout1;
+wire alm_2_cout;
+wire alm_2_lut5out0;
+wire alm_2_lut5out1;
+wire alm_2_lut6out;
+
+wire alm_3_sumout0;
+wire alm_3_sumout1;
+wire alm_3_cout;
+wire alm_3_lut5out0;
+wire alm_3_lut5out1;
+wire alm_3_lut6out;
+
+wire alm_4_sumout0;
+wire alm_4_sumout1;
+wire alm_4_cout;
+wire alm_4_lut5out0;
+wire alm_4_lut5out1;
+wire alm_4_lut6out;
+
+wire alm_0_a;
+wire alm_0_b;
+wire alm_0_c0;
+wire alm_0_d0;
+wire alm_0_c1;
+wire alm_0_d1;
+wire alm_0_e;
+wire alm_0_f;
+
+wire alm_1_a;
+wire alm_1_b;
+wire alm_1_c0;
+wire alm_1_d0;
+wire alm_1_c1;
+wire alm_1_d1;
+wire alm_1_e;
+wire alm_1_f;
+
+wire alm_2_a;
+wire alm_2_b;
+wire alm_2_c0;
+wire alm_2_d0;
+wire alm_2_c1;
+wire alm_2_d1;
+wire alm_2_e;
+wire alm_2_f;
+
+wire alm_3_a;
+wire alm_3_b;
+wire alm_3_c0;
+wire alm_3_d0;
+wire alm_3_c1;
+wire alm_3_d1;
+wire alm_3_e;
+wire alm_3_f;
+
+wire alm_4_a;
+wire alm_4_b;
+wire alm_4_c0;
+wire alm_4_d0;
+wire alm_4_c1;
+wire alm_4_d1;
+wire alm_4_e;
+wire alm_4_f;
+
+wire dout_0;
+assign dout[0] = dout_0;
+
+fourteennm_logic_module alm_0(
+    .a(alm_0_a),
+    .b(alm_0_b),
+    .c0(alm_0_c0),
+    .d0(alm_0_d0),
+    .c1(alm_0_c1),
+    .d1(alm_0_d1),
+    .e(alm_0_e),
+    .f(alm_0_f),
+    .cin(gnd),
+    .sumout0(alm_0_sumout0),
+    .sumout1(alm_0_sumout1),
+    .cout(alm_0_cout),
+    .lut5out0(alm_0_lut5out0),
+    .lut5out1(alm_0_lut5out1),
+    .lut6out(alm_0_lut6out)
+);
+defparam alm_0.lut_mask = 64'h0000000000000000;
+
+fourteennm_logic_module alm_1(
+    .a(alm_1_a),
+    .b(alm_1_b),
+    .c0(alm_1_c0),
+    .d0(alm_1_d0),
+    .c1(alm_1_c1),
+    .d1(alm_1_d1),
+    .e(alm_1_e),
+    .f(alm_1_f),
+    .cin(alm_0_cout),
+    .sumout0(alm_1_sumout0),
+    .sumout1(alm_1_sumout1),
+    .cout(alm_1_cout),
+    .lut5out0(alm_1_lut5out0),
+    .lut5out1(alm_1_lut5out1),
+    .lut6out(alm_1_lut6out)
+);
+defparam alm_1.lut_mask = 64'h0000000000000000;
+
+fourteennm_logic_module alm_2(
+    .a(alm_2_a),
+    .b(alm_2_b),
+    .c0(alm_2_c0),
+    .d0(alm_2_d0),
+    .c1(alm_2_c1),
+    .d1(alm_2_d1),
+    .e(alm_2_e),
+    .f(alm_2_f),
+    .cin(alm_1_cout),
+    .sumout0(alm_2_sumout0),
+    .sumout1(alm_2_sumout1),
+    .cout(alm_2_cout),
+    .lut5out0(alm_2_lut5out0),
+    .lut5out1(alm_2_lut5out1),
+    .lut6out(alm_2_lut6out)
+);
+defparam alm_2.lut_mask = 64'h0000000000000000;
+
+fourteennm_logic_module alm_3(
+    .a(alm_3_a),
+    .b(alm_3_b),
+    .c0(alm_3_c0),
+    .d0(alm_3_d0),
+    .c1(alm_3_c1),
+    .d1(alm_3_d1),
+    .e(alm_3_e),
+    .f(alm_3_f),
+    .cin(alm_2_cout),
+    .sumout0(alm_3_sumout0),
+    .sumout1(alm_3_sumout1),
+    .cout(alm_3_cout),
+    .lut5out0(alm_3_lut5out0),
+    .lut5out1(alm_3_lut5out1),
+    .lut6out(alm_3_lut6out)
+);
+defparam alm_3.lut_mask = 64'h0000000000000000;
+
+fourteennm_logic_module alm_4(
+    .a(alm_4_a),
+    .b(alm_4_b),
+    .c0(alm_4_c0),
+    .d0(alm_4_d0),
+    .c1(alm_4_c1),
+    .d1(alm_4_d1),
+    .e(alm_4_e),
+    .f(alm_4_f),
+    .cin(alm_3_cout),
+    .sumout0(alm_4_sumout0),
+    .sumout1(alm_4_sumout1),
+    .cout(alm_4_cout),
+    .lut5out0(alm_4_lut5out0),
+    .lut5out1(alm_4_lut5out1),
+    .lut6out(alm_4_lut6out)
+);
+defparam alm_4.lut_mask = 64'h0000000000000000;
+
+// First layer: four ALMs use only primary inputs and constants.
+z3_hint_group(input_group_0, %CONSTS, %INPUTS);
+
+z3_hint_symmetric_connection(alm_0_a, alm_0_b, input_group_0);
+z3_hint_symmetric_connection(alm_0_c0, alm_0_d0, input_group_0);
+z3_hint_symmetric_connection(alm_0_c1, alm_0_d1, input_group_0);
+z3_hint_connection(alm_0_e, alm_0_f, input_group_0);
+
+z3_hint_symmetric_connection(alm_1_a, alm_1_b, input_group_0);
+z3_hint_symmetric_connection(alm_1_c0, alm_1_d0, input_group_0);
+z3_hint_symmetric_connection(alm_1_c1, alm_1_d1, input_group_0);
+z3_hint_connection(alm_1_e, alm_1_f, input_group_0);
+
+z3_hint_symmetric_connection(alm_2_a, alm_2_b, input_group_0);
+z3_hint_symmetric_connection(alm_2_c0, alm_2_d0, input_group_0);
+z3_hint_symmetric_connection(alm_2_c1, alm_2_d1, input_group_0);
+z3_hint_connection(alm_2_e, alm_2_f, input_group_0);
+
+z3_hint_symmetric_connection(alm_3_a, alm_3_b, input_group_0);
+z3_hint_symmetric_connection(alm_3_c0, alm_3_d0, input_group_0);
+z3_hint_symmetric_connection(alm_3_c1, alm_3_d1, input_group_0);
+z3_hint_connection(alm_3_e, alm_3_f, input_group_0);
+
+// Second layer: the fifth ALM may combine primary inputs/constants and outputs of the four previous ALMs.
+z3_hint_group(merge_group_0, %CONSTS, %INPUTS, %ALM_OUTPUTS_0, %ALM_OUTPUTS_1, %ALM_OUTPUTS_2, %ALM_OUTPUTS_3);
+z3_hint_symmetric_connection(alm_4_a, alm_4_b, merge_group_0);
+z3_hint_symmetric_connection(alm_4_c0, alm_4_d0, merge_group_0);
+z3_hint_symmetric_connection(alm_4_c1, alm_4_d1, merge_group_0);
+z3_hint_connection(alm_4_e, alm_4_f, merge_group_0);
+
+z3_hint_group_with_polarity(output_group_0, %ALM_OUTPUTS_4);
+z3_hint_connection(dout_0, output_group_0);
+z3_hint_lut_mask(alm_0, %LUT_MASK_FULL);
+z3_hint_lut_mask(alm_1, %LUT_MASK_FULL);
+z3_hint_lut_mask(alm_2, %LUT_MASK_FULL);
+z3_hint_lut_mask(alm_3, %LUT_MASK_FULL);
+z3_hint_lut_mask(alm_4, %LUT_MASK_FULL);
+
+z3_hint_function(dout_0, 256'v0000000000000000000000001111000000000100111111000000000011111100000000011111111100000000111111110000000011111111000000001111111100000000000000001111000000000000111111000000010011111100000000001111111100000001111111110000000011111111000000001111111100000000);
+
+z3_hint_function(alm_4_cout, 0);
+
+endmodule
