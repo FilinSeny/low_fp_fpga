@@ -1,0 +1,144 @@
+module quartus_prj (
+	dout,
+    clk,
+	din_A,
+	din_B);
+
+output  [0:0] dout;
+input 	clk;
+input  [3:0] din_A;
+input  [3:0] din_B;
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+wire alm_0_sumout0;
+wire alm_0_sumout1;
+wire alm_0_lut5out0;
+wire alm_0_lut5out1;
+wire alm_0_lut6out;
+wire alm_0_cout;
+wire alm_1_sumout0;
+wire alm_1_sumout1;
+wire alm_1_lut5out0;
+wire alm_1_lut5out1;
+wire alm_1_lut6out;
+wire alm_1_cout;
+wire alm_2_sumout0;
+wire alm_2_sumout1;
+wire alm_2_lut5out0;
+wire alm_2_lut5out1;
+wire alm_2_lut6out;
+wire alm_2_cout;
+wire alm_3_sumout0;
+wire alm_3_sumout1;
+wire alm_3_lut5out0;
+wire alm_3_lut5out1;
+wire alm_3_lut6out;
+wire alm_3_cout;
+wire alm_4_sumout0;
+wire alm_4_sumout1;
+wire alm_4_lut5out0;
+wire alm_4_lut5out1;
+wire alm_4_lut6out;
+wire alm_4_cout;
+
+assign dout[0] = ~alm_4_lut5out0;
+
+fourteennm_logic_module alm_0(
+    .a(din_A[0]),
+    .b(din_B[3]),
+    .c0(din_A[2]),
+    .d0(din_B[2]),
+    .c1(din_A[3]),
+    .d1(din_A[1]),
+    .e(din_B[1]),
+    .f(vcc),
+    .cin(gnd),
+    .sumout0(alm_0_sumout0),
+    .sumout1(alm_0_sumout1),
+    .cout(alm_0_cout),
+    .lut5out0(alm_0_lut5out0),
+    .lut5out1(alm_0_lut5out1),
+    .lut6out(alm_0_lut6out));
+defparam alm_0.lut_mask = 64'h4F69AB7D0FA10D06;
+
+fourteennm_logic_module alm_1(
+    .a(din_B[1]),
+    .b(din_B[0]),
+    .c0(din_A[0]),
+    .d0(din_B[2]),
+    .c1(din_A[0]),
+    .d1(din_B[2]),
+    .e(din_A[1]),
+    .f(din_A[0]),
+    .cin(alm_0_cout),
+    .sumout0(alm_1_sumout0),
+    .sumout1(alm_1_sumout1),
+    .cout(alm_1_cout),
+    .lut5out0(alm_1_lut5out0),
+    .lut5out1(alm_1_lut5out1),
+    .lut6out(alm_1_lut6out));
+defparam alm_1.lut_mask = 64'h423F7F3BA2D2E36F;
+
+fourteennm_logic_module alm_2(
+    .a(din_A[2]),
+    .b(din_B[3]),
+    .c0(din_B[2]),
+    .d0(din_B[0]),
+    .c1(din_A[3]),
+    .d1(din_A[0]),
+    .e(din_A[1]),
+    .f(din_B[1]),
+    .cin(alm_1_cout),
+    .sumout0(alm_2_sumout0),
+    .sumout1(alm_2_sumout1),
+    .cout(alm_2_cout),
+    .lut5out0(alm_2_lut5out0),
+    .lut5out1(alm_2_lut5out1),
+    .lut6out(alm_2_lut6out));
+defparam alm_2.lut_mask = 64'hEED2BB4481D50FFB;
+
+fourteennm_logic_module alm_3(
+    .a(din_A[0]),
+    .b(din_B[1]),
+    .c0(din_A[3]),
+    .d0(din_A[1]),
+    .c1(din_A[3]),
+    .d1(din_B[2]),
+    .e(din_A[2]),
+    .f(din_B[0]),
+    .cin(alm_2_cout),
+    .sumout0(alm_3_sumout0),
+    .sumout1(alm_3_sumout1),
+    .cout(alm_3_cout),
+    .lut5out0(alm_3_lut5out0),
+    .lut5out1(alm_3_lut5out1),
+    .lut6out(alm_3_lut6out));
+defparam alm_3.lut_mask = 64'h775520A2FBEE8175;
+
+fourteennm_logic_module alm_4(
+    .a(alm_1_lut6out),
+    .b(alm_0_lut6out),
+    .c0(alm_2_lut6out),
+    .d0(alm_3_lut6out),
+    .c1(gnd),
+    .d1(din_B[2]),
+    .e(alm_2_sumout0),
+    .f(alm_1_lut5out1),
+    .cin(alm_3_cout),
+    .sumout0(alm_4_sumout0),
+    .sumout1(alm_4_sumout1),
+    .cout(alm_4_cout),
+    .lut5out0(alm_4_lut5out0),
+    .lut5out1(alm_4_lut5out1),
+    .lut6out(alm_4_lut6out));
+defparam alm_4.lut_mask = 64'h0000002056BD36C3;
+
+endmodule
